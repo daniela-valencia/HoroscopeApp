@@ -12,18 +12,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.horoscopeapp.DAO.HoroscopeDAO;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -119,8 +114,7 @@ public class SecondActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 String fileName = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new Date());
-                HoroscopeDAO horoscopeDAO = new HoroscopeDAO(SecondActivity.this);
-                //horoscopetxt = horoscopeDAO.getRecord(sign_choosen,day_choosen);
+                //HoroscopeDAO horoscopeDAO = new HoroscopeDAO(SecondActivity.this);
                 String your_sign =  horoscopetxt.getSign().substring(0, 1).toUpperCase() + horoscopetxt.getSign().substring(1);
                 String fileBody="Horoscope 2021"+"\n"+"Sign: "+your_sign+"\n"+"Date Range: "+horoscopetxt.getRange()+"\n"+
                         "Current Date: "+horoscopetxt.getCurrent_date()+"\n"+"Description: "+horoscopetxt.getDescription()+"\n"+
@@ -154,9 +148,9 @@ public class SecondActivity extends AppCompatActivity{
                     HoroscopeClass horoscope = response.body();
                     horoscopetxt =  response.body();
                     horoscope.setSign(sign);
-                    HoroscopeDAO horoscopeDAO = new HoroscopeDAO(SecondActivity.this);
+                    //HoroscopeDAO horoscopeDAO = new HoroscopeDAO(SecondActivity.this);
                     //We store our info on the db
-                    horoscopeDAO.addRecord(horoscope);
+                    //horoscopeDAO.addRecord(horoscope);
                     //We send the info and display it on the view
                     setValuesToView(horoscope);
                 } else {
